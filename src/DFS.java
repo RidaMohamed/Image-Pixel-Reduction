@@ -97,10 +97,10 @@ class DFS
 	g.addEdge(new Edge(4, 3, 1));
 	g.addEdge(new Edge(3, 5, 1));
 	g.addEdge(new Edge(5, 1, 1));
-	botched_dfs1(g, 0);
-	botched_dfs2(g, 0);
+//	botched_dfs1(g, 0);
+//	botched_dfs2(g, 0);
 	botched_dfs3(g, 0);
-	botched_dfs4(g, 0);
+//	botched_dfs4(g, 0);
 
 
     }

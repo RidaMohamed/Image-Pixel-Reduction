@@ -3,16 +3,18 @@ import java.util.ArrayList;
 class GraphImplicit extends Graph{
     int N;
     
-@SuppressWarnings("unchecked")    
     GraphImplicit(int N){
 	this.N = N;
     }
+
+	GraphImplicit(int[] [] interest, int w, int h){
+
+	}
 
     public int vertices(){
 	return N;
     }
     
-@SuppressWarnings("unchecked")    
     public Iterable<Edge> next(int v)
 	 {
 	     ArrayList<Edge> edges = new ArrayList();
@@ -21,7 +23,7 @@ class GraphImplicit extends Graph{
 	     return edges;
 		      
 	 }
-@SuppressWarnings("unchecked")
+
    public Iterable<Edge> prev(int v)
 	 {
 	     ArrayList<Edge> edges = new ArrayList();

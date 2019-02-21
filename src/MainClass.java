@@ -1,23 +1,21 @@
+
 public class MainClass {
 
     public static void main(String[] args){
+        long start = System.currentTimeMillis();
 
-        SeamCarving seamCarving = new SeamCarving();
-        Functions functions = new Functions();
-        int [][] image = seamCarving.readpgm("ex1.pgm");
-        functions.writepgm(image , "src/ex4.pgm");
-        int [][] image2 = functions.interest(image);
-        int [][] image3 = new int[3][4];
-        for (int i = 0 ; i< 3 ; i ++ ){
-            for (int j =0 ; j<4 ; j++){
-                image3[i][j] = 5;
-            }
+
+
+        if (args.length != 1) {
+            System.err.println("Nombre incorrect d'arguments") ;
+            System.err.println("\tjava -jar ImageCompress.jar <image.pgm>") ;
+            System.exit(1) ;
         }
-        Graph graph = functions.tograph(image3);
-        graph.writeFile("src/graph_ex4.dot");
-        DFS.testGraph();
+        Functions functions = new Functions();
+        functions.comprreser(args[0]);
 
-
+        long time = System.currentTimeMillis() - start;
+        System.out.println(time);
     }
 
 }

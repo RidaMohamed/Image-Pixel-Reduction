@@ -1,0 +1,26 @@
+ -----------
+ Explication :
+    - pour le 1 er cas et le 2 eme cas , parceque pour chaque sommet tous ces voisins non visités
+      sont visités avant de passer vers un autre sommet ce qui implique que l'orde est different,
+      en effet , il faut visiter un seul voisin apres passer vers le prochine voisin non visité de
+      prochaine sommet et ainsi de suite jusqu'q obtenir le le parcours correct.
+
+    - pour le 3eme cas ,  parceque apres le somme t est diplee on verifie s'il est non visité apres
+      si c'est le cas on le mets comme visité ce qui implique que le sommet peut etre visité plus
+      d'une donc la capacité de la pile double.
+      EX :
+
+    - pour le 4eme cas
+      EX :
+
+
+ --------------
+ Améliorations :
+    -Dans la fonction tritopologie() , l'algorithme est changé , en utilisant la methode iteratif au lieu de la
+     methode recurssif , en utilisant 2 piles , une pour sauvgarder le sommet visité et la 2 eme pour ces voisins.
+
+    -Aussi la foncton DFS() n'est plus utilisé.
+
+    -
+
+    -
