@@ -95,6 +95,8 @@ public class Functions {
      */
     public Graph tograph(int[][] itr) {
 
+        //Des changements en suivant la fonction d'energie
+
         Graph graph ;
         //Creation d'un graphe de n sommets + les 2 sommets A et P
         GraphArrayList graphArrayList = new GraphArrayList(itr.length*itr[0].length+2);
@@ -115,22 +117,30 @@ public class Functions {
         for (i=0 ; i<itr.length-1; i++){
             for (j=0; j<itr[0].length; j++){
                 if (j==0){
-                    edge = new Edge(u,u+itr[0].length, itr[i][j]);
+                    edge = new Edge(u,u+itr[0].length, Math.abs(itr[i][j+1] - 0));
                     graphArrayList.addEdge(edge);
-                    edge = new Edge(u,u+itr[0].length+1, itr[i][j]);
+                    edge = new Edge(u,u+itr[0].length+1, Math.abs(itr[i][j+1]  - itr[i+1][j]));
                     graphArrayList.addEdge(edge);
                 }else if (j==itr[0].length-1){
-                    edge = new Edge(u,u+itr[0].length, itr[i][j]);
+                    edge = new Edge(u,u+itr[0].length, Math.abs(0 - itr[i][j]));
                     graphArrayList.addEdge(edge);
-                    edge = new Edge(u,u+itr[0].length-1, itr[i][j]);
+                    edge = new Edge(u,u+itr[0].length-1, Math.abs(itr[i][j-1] - itr[i+1][j]));
                     graphArrayList.addEdge(edge);
                 }else {
-                    edge = new Edge(u,u+itr[0].length, itr[i][j]);
+                    //fonvtion d'energie
+                    edge = new Edge(u,u+itr[0].length, Math.abs(itr[i][j+1]-itr[i][j-1]));
+                    graphArrayList.addEdge(edge);
+                    edge = new Edge(u,u+itr[0].length+1, Math.abs(itr[i][j+1] - itr[i+1][j]));
+                    graphArrayList.addEdge(edge);
+                    edge = new Edge(u,u+itr[0].length-1, Math.abs(itr[i][j-1] - itr[i+1][j]));
+                    graphArrayList.addEdge(edge);
+
+                    /*edge = new Edge(u,u+itr[0].length, itr[i][j]);
                     graphArrayList.addEdge(edge);
                     edge = new Edge(u,u+itr[0].length+1, itr[i][j]);
                     graphArrayList.addEdge(edge);
                     edge = new Edge(u,u+itr[0].length-1, itr[i][j]);
-                    graphArrayList.addEdge(edge);
+                    graphArrayList.addEdge(edge);*/
                 }
                 u++;
             }
@@ -138,10 +148,20 @@ public class Functions {
 
         //lieer les derniers arretes avec un sommet P
         for (j=0 ; j<itr[0].length ; j++){
-            //creet l'arrete est la lieer au sommet-j-
-            edge = new Edge(u,  itr.length*itr[0].length+1, itr[itr.length-1][j]);
+            //Adapter a la fonction d'energie
+            if ( j == 0)
+                edge = new Edge(u,  itr.length*itr[0].length+1,itr[itr.length-1][j+1]);
+            else if (j == itr[0].length -1)
+                edge = new Edge(u,  itr.length*itr[0].length+1, itr[itr.length-1][j-1]);
+            else
+                edge = new Edge(u,  itr.length*itr[0].length+1,
+                        Math.abs(itr[itr.length-1][j+1] -itr[itr.length-1][j-1]));
+
             graphArrayList.addEdge(edge);
             u++;
+            /*edge = new Edge(u,  itr.length*itr[0].length+1, itr[itr.length-1][j]);
+            graphArrayList.addEdge(edge);
+            u++;*/
         }
 
         return graphArrayList;

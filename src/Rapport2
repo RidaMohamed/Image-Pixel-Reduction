@@ -21,6 +21,8 @@
 
     -Aussi la foncton DFS() n'est plus utilisé.
 
-    -
+    -Dans la constuction de graphe , la methode de la fonction d'energie donnee sur le document a etait utilisé
+     dans la fonction tritopologie().
 
-    -
+    -Des modification ont etais apportee sur la classe GraphImplicite , en changant le constructeur et les methode
+     next/prev
